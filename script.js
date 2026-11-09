@@ -104,7 +104,24 @@ $('c1').textContent = QUESTIONS.filter(q => q.c === 1).length;
 $('c2').textContent = QUESTIONS.filter(q => q.c === 2).length;
 $('c3').textContent = QUESTIONS.length;
 
+const themeBtns = document.querySelectorAll('.theme-btn');
+const systemDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+function paintTheme() {
+  const theme = document.documentElement.dataset.theme || (systemDark.matches ? 'dark' : 'light');
+  themeBtns.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.themeSet === theme)));
+}
+
+themeBtns.forEach(b => b.addEventListener('click', () => {
+  document.documentElement.dataset.theme = b.dataset.themeSet;
+  try { localStorage.setItem('theme', b.dataset.themeSet); } catch (e) {}
+  paintTheme();
+}));
+systemDark.addEventListener('change', paintTheme);
+paintTheme();
+
 document.addEventListener('keydown', e => {
+  if (e.target.closest && e.target.closest('.theme')) return;
   if (!$('v-quiz').hidden) {
     if (!answered && e.key >= '1' && e.key <= '4') answer(+e.key);
     else if (answered && (e.key === 'Enter' || e.key === ' ') && document.activeElement !== $('q-next')) { e.preventDefault(); next(); }
