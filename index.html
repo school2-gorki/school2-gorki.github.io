@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Викторина «Вторая школа»</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Manrope:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <section id="v-start">
+    <div class="wrap">
+      <div class="crest">
+        <div class="badge" id="logo"><img src="img/logo.jpg" alt="Аватарка школы" onload="this.parentNode.classList.add('photo')" onerror="this.remove();document.getElementById('logo').textContent='№2'"></div>
+        <div class="crest-text">
+          <div class="crest-name">Средняя школа №2 г. Горки</div>
+          <div class="crest-sub">1846 — 2026 · ул. Якубовского, 31</div>
+        </div>
+      </div>
+      <h1>Что ты знаешь о <span class="gold">второй школе?</span></h1>
+      <p class="lead">История школы и её учителя в тридцати вопросах. За правильный ответ откроется интересный факт, а в конце поставим оценку по десятибалльной шкале.</p>
+      <div class="label">Выбери раздел</div>
+      <div class="modes">
+        <button class="mode" id="m1" data-mode="1"><span class="mode-title">История школы</span><span class="mode-desc">От народного училища 1846 года до наших дней</span><span class="mode-count" id="c1">15</span></button>
+        <button class="mode" id="m2" data-mode="2"><span class="mode-title">Наши учителя</span><span class="mode-desc">Конкурсы, награды и необычные истории</span><span class="mode-count" id="c2">15</span></button>
+        <button class="mode primary" id="m3" data-mode="3"><span class="mode-title">Все вопросы</span><span class="mode-desc">Полная викторина</span><span class="mode-count" id="c3">30</span></button>
+      </div>
+    </div>
+  </section>
+
+  <section id="v-quiz" hidden>
+    <div class="wrap">
+      <div class="topbar">
+        <span class="chip" id="q-cat">История школы</span>
+        <span class="counter" id="q-counter">1 / 15</span>
+      </div>
+      <div class="track" aria-hidden="true"><div class="fill" id="q-fill"></div></div>
+      <div class="qcard">
+        <div class="qnum" id="q-num">Вопрос 1</div>
+        <p class="qtext" id="q-text"></p>
+      </div>
+      <div class="opts" id="q-opts"></div>
+      <div class="fact" id="q-fact" hidden>
+        <p class="verdict" id="q-verdict"></p>
+        <p class="ftext"><span class="flabel">Интересный факт: </span><span id="q-ftext"></span></p>
+      </div>
+      <button class="btn" id="q-next" hidden>Дальше</button>
+      <div class="hint">Можно отвечать клавишами 1–4, Enter — дальше</div>
+    </div>
+  </section>
+
+  <section id="v-result" hidden>
+    <div class="wrap">
+      <div class="result">
+        <div class="grade-cap">Оценка</div>
+        <div class="grade" id="r-grade">10</div>
+        <div class="score" id="r-score"></div>
+        <div class="dots" id="r-dots" aria-hidden="true"></div>
+        <p class="msg" id="r-msg"></p>
+      </div>
+      <div class="btn-row">
+        <button class="btn" id="r-again">Ещё раз</button>
+        <button class="btn ghost" id="r-menu">В меню</button>
+      </div>
+      <div class="foot">Спасибо за игру!</div>
+    </div>
+  </section>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
