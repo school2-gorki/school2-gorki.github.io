@@ -100,6 +100,8 @@ document.querySelectorAll('.mode').forEach(b => b.addEventListener('click', () =
 $('q-next').addEventListener('click', next);
 $('r-again').addEventListener('click', () => start(mode));
 $('r-menu').addEventListener('click', () => show('v-start'));
+$('q-restart').addEventListener('click', () => start(mode));
+$('q-exit').addEventListener('click', () => show('v-start'));
 $('c1').textContent = QUESTIONS.filter(q => q.c === 1).length;
 $('c2').textContent = QUESTIONS.filter(q => q.c === 2).length;
 $('c3').textContent = QUESTIONS.length;
@@ -121,9 +123,8 @@ systemDark.addEventListener('change', paintTheme);
 paintTheme();
 
 document.addEventListener('keydown', e => {
-  if (e.target.closest && e.target.closest('.theme')) return;
   if (!$('v-quiz').hidden) {
     if (!answered && e.key >= '1' && e.key <= '4') answer(+e.key);
-    else if (answered && (e.key === 'Enter' || e.key === ' ') && document.activeElement !== $('q-next')) { e.preventDefault(); next(); }
+    else if (answered && (e.key === 'Enter' || e.key === ' ') && e.target.tagName !== 'BUTTON') { e.preventDefault(); next(); }
   }
 });
