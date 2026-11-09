@@ -110,7 +110,7 @@ const themeBtns = document.querySelectorAll('.theme-btn');
 const systemDark = window.matchMedia('(prefers-color-scheme: dark)');
 
 function paintTheme() {
-  const theme = document.documentElement.dataset.theme || (systemDark.matches ? 'dark' : 'light');
+  const theme = document.documentElement.dataset.theme || (systemDark.matches ? 'blue' : 'light');
   themeBtns.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.themeSet === theme)));
 }
 
